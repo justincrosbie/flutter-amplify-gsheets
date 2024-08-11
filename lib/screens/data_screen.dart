@@ -22,8 +22,8 @@ class _DataScreenState extends State<DataScreen> {
   }
 
   Future<void> fetchData() async {
-    final sheetId = dotenv.env['SHEET_ID']!;
-    final url =
+    const sheetId = '1NDEQpVpIY33rnSCyXql5yIZXrQsBkDjkfmleemP7JdY';
+    const url =
         'https://x2qav31zh9.execute-api.us-east-1.amazonaws.com/hudomGSheets?sheetId=$sheetId';
     final response = await http.get(Uri.parse(url));
 
