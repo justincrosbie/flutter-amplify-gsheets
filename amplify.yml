@@ -3,9 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        # Install dependencies required for Flutter
-        - wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.10-stable.tar.xz
-        - tar xf flutter_linux_3.3.10-stable.tar.xz
+        # Download the latest stable version of Flutter SDK
+        - wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_latest-stable.tar.xz
+        - tar xf flutter_linux_latest-stable.tar.xz
         - export PATH="$PATH:`pwd`/flutter/bin"
         - flutter doctor
         - flutter config --enable-web
