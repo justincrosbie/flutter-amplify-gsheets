@@ -11,6 +11,12 @@ frontend:
         # Set up the required Flutter version via fvm
         - fvm install 3.10.6
         - fvm use 3.10.6
+        
+        # Make fvm's Dart and Flutter accessible
+        - export PATH="$PATH:$HOME/.fvm/default/bin"
+        
+        # Verify the Dart and Flutter versions
+        - fvm dart --version
         - fvm flutter doctor
         
         # Enable Flutter web
