@@ -3,15 +3,13 @@ import { google } from 'googleapis';
 
 const sheets = google.sheets('v4');
 
+const secretName = "hudom_gsheets";
+const region = "us-east-1"; // replace with your AWS region
+const spreadsheetId = "1NDEQpVpIY33rnSCyXql5yIZXrQsBkDjkfmleemP7JdY";
 const range = 'Sheet1!A1:D10';
 
 export const handler = async (event) => {
     try {
-
-        const secretName = "hudom_gsheets";
-        const region = "us-east-1"; // replace with your AWS region
-
-        const spreadsheetId = event.queryStringParameters.sheetId;
 
         const secretsManager = new AWS.SecretsManager({ region });
 

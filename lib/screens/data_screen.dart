@@ -21,9 +21,8 @@ class _DataScreenState extends State<DataScreen> {
   }
 
   Future<void> fetchData() async {
-    const sheetId = '1NDEQpVpIY33rnSCyXql5yIZXrQsBkDjkfmleemP7JdY';
     const url =
-        'https://x2qav31zh9.execute-api.us-east-1.amazonaws.com/hudomGSheets?sheetId=$sheetId';
+        'https://x2qav31zh9.execute-api.us-east-1.amazonaws.com/hudomGSheets';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
