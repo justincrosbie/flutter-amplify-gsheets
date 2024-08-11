@@ -3,6 +3,13 @@ frontend:
   phases:
     preBuild:
       commands:
+        # Remove the pre-installed Dart SDK, if possible
+        - rm -rf /root/.pub-cache
+        - rm -rf /root/.dart
+        - sudo rm -rf /usr/local/bin/dart
+        - sudo rm -rf /usr/local/bin/pub
+        - sudo rm -rf /usr/lib/dart
+
         # Download the latest stable version of Flutter SDK
         - wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
         - tar xf flutter_linux_3.10.6-stable.tar.xz
@@ -11,7 +18,7 @@ frontend:
         # Download and install the required Dart SDK version
         - wget https://storage.googleapis.com/dart-archive/channels/stable/release/3.5.0/sdk/dartsdk-linux-x64-release.zip
         - unzip dartsdk-linux-x64-release.zip -d dart-sdk
-        - export PATH=`pwd`/dart-sdk/dart-sdk/bin:$PATH  # Prioritize the newly installed Dart SDK
+        - export PATH="`pwd`/dart-sdk/dart-sdk/bin:$PATH"  # Prioritize the newly installed Dart SDK
         
         # Verify the Dart version
         - dart --version
