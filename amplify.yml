@@ -4,8 +4,8 @@ frontend:
     preBuild:
       commands:
         # Download the latest stable version of Flutter SDK
-        - wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_latest-stable.tar.xz
-        - tar xf flutter_linux_latest-stable.tar.xz
+        - wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
+        - tar xf flutter_linux_3.10.6-stable.tar.xz
         - export PATH="$PATH:`pwd`/flutter/bin"
         - flutter doctor
         - flutter config --enable-web
