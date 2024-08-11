@@ -9,10 +9,9 @@ frontend:
         - export PATH="$PATH:`pwd`/flutter/bin"
         
         # Download and install the required Dart SDK version
-        - sudo apt-get remove dart
         - wget https://storage.googleapis.com/dart-archive/channels/stable/release/3.5.0/sdk/dartsdk-linux-x64-release.zip
         - unzip dartsdk-linux-x64-release.zip -d dart-sdk
-        - export PATH="$PATH:`pwd`/dart-sdk/bin"
+        - export PATH="$PATH:`pwd`/dart-sdk/dart-sdk/bin"
         
         # Ensure Flutter is set up for web development
         - flutter doctor
