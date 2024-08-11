@@ -3,33 +3,22 @@ frontend:
   phases:
     preBuild:
       commands:
-        # Remove the pre-installed Dart SDK, if possible
-        - rm -rf /root/.pub-cache
-        - rm -rf /root/.dart
-        - sudo rm -rf /usr/local/bin/dart
-        - sudo rm -rf /usr/local/bin/pub
-        - sudo rm -rf /usr/lib/dart
-
-        # Download the latest stable version of Flutter SDK
-        - wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
-        - tar xf flutter_linux_3.10.6-stable.tar.xz
-        - export PATH="$PATH:`pwd`/flutter/bin"
+        # Install fvm (Flutter Version Management)
+        - curl -sL https://firebase.tools | bash
+        - dart pub global activate fvm
+        - export PATH="$PATH:$HOME/.pub-cache/bin"
         
-        # Download and install the required Dart SDK version
-        - wget https://storage.googleapis.com/dart-archive/channels/stable/release/3.5.0/sdk/dartsdk-linux-x64-release.zip
-        - unzip dartsdk-linux-x64-release.zip -d dart-sdk
-        - export PATH="`pwd`/dart-sdk/dart-sdk/bin:$PATH"  # Prioritize the newly installed Dart SDK
+        # Set up the required Flutter version via fvm
+        - fvm install 3.10.6
+        - fvm use 3.10.6
+        - fvm flutter doctor
         
-        # Verify the Dart version
-        - dart --version
-        
-        # Ensure Flutter is set up for web development
-        - flutter doctor
-        - flutter config --enable-web
-        - flutter pub get
+        # Enable Flutter web
+        - fvm flutter config --enable-web
+        - fvm flutter pub get
     build:
       commands:
-        - flutter build web --release
+        - fvm flutter build web --release
   artifacts:
     baseDirectory: build/web
     files:
@@ -38,4 +27,4 @@ frontend:
     paths:
       - node_modules/**/*
       - .pub-cache
-      - flutter/bin/cache
+      - .fvm
