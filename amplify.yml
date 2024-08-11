@@ -11,7 +11,10 @@ frontend:
         # Download and install the required Dart SDK version
         - wget https://storage.googleapis.com/dart-archive/channels/stable/release/3.5.0/sdk/dartsdk-linux-x64-release.zip
         - unzip dartsdk-linux-x64-release.zip -d dart-sdk
-        - export PATH="$PATH:`pwd`/dart-sdk/dart-sdk/bin"
+        - export PATH=`pwd`/dart-sdk/dart-sdk/bin:$PATH  # Prioritize the newly installed Dart SDK
+        
+        # Verify the Dart version
+        - dart --version
         
         # Ensure Flutter is set up for web development
         - flutter doctor
